@@ -1,0 +1,43 @@
+import React from 'react'
+import logo from '../../assets/logo-dio.png';
+
+import { Button } from '../Button';
+
+import { Container, Wrapper, BuscarInputContainer, Input, Row, Menu, MenuRight, UserPicture} from './styles';
+
+const Header = ({autenticado}) => {
+  return (
+    <Wrapper>
+      <Container>
+          <Row>
+            <img src={logo} alt="Logo da dio"/>
+            {autenticado ? (
+              <>
+               <BuscarInputContainer>
+                <Input placeholder='Buscar...'/>
+               </BuscarInputContainer>
+                <MenuRight>Live Code</MenuRight>
+                <Menu>Global</Menu>
+              </>
+            ) : null}
+          </Row>
+          <Row>
+              {autenticado ? (
+                <UserPicture src="https://avatars.githubusercontent.com/u/45184516?v=4"/>
+              ) : (
+              <>
+                <MenuRight href="/">Home</MenuRight>
+                {/* <Button title="Entrar" />
+                <Button title="Cadastrar" /> */}
+                <MenuRight>O que é</MenuRight>
+                <MenuRight>Recursos</MenuRight>
+                <MenuRight>Ciclo TDD</MenuRight>
+                <Button title={'Documentação'} variant='tercenary_menu'></Button>
+              </>)}
+          </Row>
+      </Container>
+    </Wrapper>
+  )
+}
+
+export { Header }
